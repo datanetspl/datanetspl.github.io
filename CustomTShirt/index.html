@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Custom TShirts</title>
+		
+	<link href="css/normalize.css" rel="stylesheet">
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+
+    
+		<script src="js/jquery-1.10.2.js">	</script>
+		<script src="js/bootstrap.js">		</script>
+		
+		<style>
+
+</style>
+
+</head>
+<script type="text/javascript">
+	function changeval() {
+		$total = parseInt($("#small").val()) + parseInt($("#medium").val()) + parseInt($("#large").val()) + parseInt($("#xlarge").val()) + parseInt($("#xxlarge").val());
+		$('.small').val($("#small").val());
+		$('.medium').val($("#medium").val());
+		$('.large').val($("#large").val());
+		$('.xlarge').val($("#xlarge").val());
+		$('.xxlarge').val($("#xxlarge").val());
+		$('.total').val($total);
+	}
+
+	function changeval2() {
+		$total = parseInt($("#small2").val()) + parseInt($("#medium2").val()) + parseInt($("#large2").val()) + parseInt($("#xlarge2").val()) + parseInt($("#xxlarge2").val());
+		$('.small').val($("#small2").val());
+		$('.medium').val($("#medium2").val());
+		$('.large').val($("#large2").val());
+		$('.xlarge').val($("#xlarge2").val());
+		$('.xxlarge').val($("#xxlarge2").val());
+		$('.total').val($total);
+	}
+
+	function b() {
+		$('#custom_text').toggleClass('bold_text');
+		$("#bold_button").toggleClass('box-shadow', '0 0 10px inset #3c3c3c');
+	}
+
+	function i() {
+		$('#custom_text').toggleClass('italic_text');
+	}
+
+	function changeFont(_name) {
+		$('#custom_text').css("font-family", _name);
+	}
+
+	function changeFontSize(_size) {
+		$('#custom_text').css("font-size", _size);
+	}
+
+	function changeColor(_color) {
+		$('#custom_text').css("color", _color);
+	}
+</script>
+
+<body>
+		
+	<div id="maindiv">
+	
+	</div>
+	
+</body>
+		
+</html>
+<script>
+    $(function () {
+        $("#maindiv").load("customdesignAPI/innerdiv.html");
+    });
+	function readURL(input) {
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+			reader.onload = function(e) {
+				image_icon(e.target.result);
+			}
+
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
+
+
+	$("#imgInp").change(function() {
+		readURL(this);
+	});
+
+</script>
