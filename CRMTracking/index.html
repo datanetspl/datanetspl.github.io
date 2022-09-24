@@ -1,0 +1,143 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css"/>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"></script>
+<script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+<script src="dataTables.editor.js" ></script>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="padding-left: 30px;">
+  <a class="navbar-brand" href="#"><img src="logo.png" width="30" height="30" alt=""></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">About Us</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dashboards
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Map</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Data</a>
+        </div>
+      </li>
+      
+    </ul>
+    
+  </div>
+</nav>
+<div class="row">
+<h3 style="text-align: center;">Client CRM Tracking</h3></div>
+<div class="row">
+<div class="col col-2" style="background-color: lightgray;"></div>
+<div class="col col-1"></div>
+<div class="col col-6">
+
+<div id='map' style="height:500px;"></div>
+</div>
+<div class="col col-1">
+<nav id="menu"></nav>
+</div>
+<div class="col col-2"></div>
+
+</div>
+<div class="row">
+<div class="col col-2" style="background-color: lightgray;"></div>
+<div class="col col-1"></div>
+<div class="col col-6">
+<table id="example" class="display" width="100%">
+<thead>
+            <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Location</th>
+                <th>Value</th>
+                <th>Description</th>
+            </tr>
+        </thead></table>
+</div>
+<div class="col col-3"></div>
+</div>
+<script src="data.js" async=false></script>
+<script type="text/javascript">
+
+window.onload = function () {
+
+    mapboxgl.accessToken ='pk.eyJ1IjoiYWxha3R1IiwiYSI6ImNrbmNsZ2UyYTB6NGIydm8waTR6bjA1ZjIifQ.4H09hGwylHSfgRdphifWyg';
+    
+    const map = new mapboxgl.Map({
+        container: "map",
+        style: 'mapbox://styles/mapbox/streets-v11',
+        center: [-95.71, 37.09],
+        zoom: 3,
+        //maxZoom: 6
+    });
+
+    const marker1 = new mapboxgl.Marker({"color": "#b40219"})
+.setLngLat([-87.6, 41.88])
+.addTo(map);
+const marker2 = new mapboxgl.Marker({"color": "#b40219"})
+.setLngLat([-118, 34])
+.addTo(map);
+const marker3 = new mapboxgl.Marker({"color": "#b40219"})
+.setLngLat([-74, 40])
+.addTo(map);
+const marker4 = new mapboxgl.Marker({"color": "#b40219"})
+.setLngLat([-97.7, 30])
+.addTo(map);
+const marker5 = new mapboxgl.Marker({"color": "#b40219"})
+.setLngLat([-122, 37.88])
+.addTo(map);
+
+
+var editor = new $.fn.dataTable.Editor( {
+        table: "#example",
+        idSrc: 'Name',
+        fields: [ {
+                label: "Name",
+                name: "Name"
+            }, {
+                label: "Position",
+                name: "Position"
+            }, {
+                label: "Location",
+                name: "Location"
+            }, {
+                label: "Value",
+                name: "Value"
+            }, {
+                label: "Description",
+                name: "Description"
+            }
+        ]
+    } );
+ 
+    // Activate an inline edit on click of a table cell
+    $('#example').on( 'click', 'tbody td:not(:first-child)', function (e) {
+        editor.inline( this );
+    } );
+ 
+
+$('#example').DataTable({
+        data: data,
+        columns: [
+            { data: 'Name' },
+            { data: 'Position' },
+            { data: 'Location' },
+            { data: 'Value' },
+            { data: 'Description' }
+        ],
+    });
+
+
+}
+</script>
