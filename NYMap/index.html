@@ -64,7 +64,7 @@ background: #3074a4;
 <script type="text/javascript">
 
 window.onload = function () {
-    const apiKey = "AAPK22dc4da4899743e8a2d7e4db65e57756ubPIOitCdAzrTCgs2kfA64MIKakq3BrhSEnEUnp_ssSjjiGHRmF23ED1aSdFXX0M";
+    mapboxgl.accessToken ='pk.eyJ1IjoiYWxha3R1IiwiYSI6ImNrbmNsZ2UyYTB6NGIydm8waTR6bjA1ZjIifQ.4H09hGwylHSfgRdphifWyg';
     var coords = fulldata['features'].map(function (x) {
         return [x['geometry']['coordinates'], x['properties']['borough']]
     });
@@ -79,7 +79,7 @@ window.onload = function () {
     const basemapEnum = "ArcGIS:LightGray";
     const map = new mapboxgl.Map({
         container: "map",
-        style: `https://basemaps-api.arcgis.com/arcgis/rest/services/styles/${basemapEnum}?type=style&token=${apiKey}`,
+        style: 'mapbox://styles/mapbox/streets-v11',
         center: [-74, 40.71],
         zoom: 9,
         //maxZoom: 6
