@@ -1,0 +1,109 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.2/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/orgchart/3.4.0/js/jquery.orgchart.min.js"></script>
+<script src="https://unpkg.com/json-digger@1.3.0/dist/json-digger.js"></script>
+<link rel="stylesheet" href="jquery.orgchart.min.css"/>
+<style>
+#chart-container {
+  font-family: Arial;
+  height: 90hv;
+  border: 1px solid #aaa;
+  overflow: auto;
+  text-align: center;
+}
+</style>
+<div id="chart-container"></div>
+<script>
+(function ($) {
+  $(function () {
+    var datascource = {
+      id: "1",
+      name: "John Smith",
+      title: "General Manager",
+      children: [
+        { id: "2", name: "Meredith Danver", title: "Dept Manager" },
+        {
+          id: "3",
+          name: "Sun Diao",
+          title: "Engg Manager",
+          children: [
+            { id: "4", name: "Dan Palmer", title: "Sr Engineer" },
+            {
+              id: "5",
+              name: "Fred Booth",
+              title: "Sr Engineer",
+              children: [
+                { id: "6", name: "Richard Morton", title: "Engineer" },
+                {
+                  id: "7",
+                  name: "Dan Ellison",
+                  title: "UE Engineer",
+                  children: [
+                    { id: "8", name: "Merill Vean", title: "Engineer" },
+                    {
+                      id: "9",
+                      name: "Aaron Drucker",
+                      title: "Engineer",
+                      children: [
+                        { id: "10", name: "Regan Klimt", title: "Intern" },
+                        { id: "11", name: "Fred Voight", title: "Intern" }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        { id: "12", name: "Sue Allen", title: "Engg Manager" },
+        {
+          id: "13",
+          name: "Krystal Coleman",
+          title: "Dept Manager",
+          children: [
+            { id: "14", name: "Bing Xian", title: "Sr Engineer" },
+            {
+              id: "15",
+              name: "Rajan Kumar",
+              title: "Sr Engineer",
+              children: [
+                { id: "16", name: "Tim Dorman", title: "Engineer" },
+                { id: "17", name: "Eileen Smith", title: "UE Engineer" }
+              ]
+            }
+          ]
+        }
+      ]
+    };
+
+    var oc = $("#chart-container").orgchart({
+      data: datascource,
+      nodeContent: "title",
+      draggable: true,
+      verticalLevel: 3,
+      'createNode': function($node, data) {
+          $node.on('click', function(event) {
+            if (!$(event.target).is('.edge, .toggleBtn')) {
+              var $this = $(this);
+              var $chart = $this.closest('.orgchart');
+              var newX = window.parseInt(($chart.outerWidth(true)/2) - ($this.offset().left - $chart.offset().left) - ($this.outerWidth(true)/2));
+              var newY = window.parseInt(($chart.outerHeight(true)/2) - ($this.offset().top - $chart.offset().top) - ($this.outerHeight(true)/2));
+              $chart.css('transform', 'matrix(1, 0, 0, 1, ' + newX + ', ' + newY + ')');
+            }
+          });
+        }
+    });
+
+    oc.$chart.on("nodedrop.orgchart", function (event, extraParams) {
+      console.log(
+        "draggedNode:" +
+          extraParams.draggedNode.children(".title").text() +
+          ", dragZone:" +
+          extraParams.dragZone.children(".title").text() +
+          ", dropZone:" +
+          extraParams.dropZone.children(".title").text()
+      );
+    });
+  });
+})(jQuery);
+
+</script>
