@@ -1,0 +1,138 @@
+<!DOCTYPE HTML>
+<!--
+	Escape Velocity by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+<style>
+
+body {
+background-color: #f8f8f9;
+}
+
+table {
+background-color: white;
+}
+
+button {
+padding: 10px;
+border-radius: 5px;
+background-color: white;
+border: white;
+font-family: arial;
+}
+
+
+thead {
+color : #0781fe;
+line-height: 1.8;
+font-weight: 700;
+}
+
+tbody {
+line-height: 2;}
+
+.first {
+color : #0781fe;
+font-size: 14;
+font-color: #0781fe;
+font-weight: 700;
+}
+
+.grayd {
+background-color: #f8f8f9;
+text-align: center;
+}
+
+.whitd {
+text-align: center;
+}
+
+.styled-table {
+width: 100%;
+    border-radius: 15px;
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 14;
+    
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+}
+
+button {
+font-size: 14;
+height: 40px;
+font-weight: 700;
+margin: 20px;
+}
+
+img {
+height: -webkit-fill-available;
+vertical-align: middle;
+margin-right: 10px;
+}
+</style>
+	<head>
+		<title>Table</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		
+	</head>
+	<body class="homepage is-preload">
+    <div class="container" style="padding: 80px;">
+    <div class="row"><p style="font-size:14; font-weight:600;margin: 10px;font-family:arial;">Currency:</p></div>
+    <div class="row">
+    <button style="background-color:#0781fe"> <img src="https://ftmo.com/wp-content/plugins/trading-objectives/build/images/usd-round-flag.417cef31.png">USD</button>
+    <button> <img src="https://ftmo.com/wp-content/plugins/trading-objectives/build/images/gbp-round-flag.292cd401.png">GBP</button>
+    <button> <img src="https://ftmo.com/wp-content/plugins/trading-objectives/build/images/eur-round-flag.3ee46dd1.png">EUR</button>
+    <button> <img src="https://ftmo.com/wp-content/plugins/trading-objectives/build/images/czk-round-flag.4569f892.png">CZK</button>
+    </div>
+    <div class="row"><p style="font-size:14; font-weight:600;margin: 10px;font-family:arial;">Risk:</p></div>
+    <div class="row">
+    <button style="background-color:#0781fe"> Normal</button>
+    <button> Aggressive</button>
+    </div>
+    <div class="row"><p style="font-size:14; font-weight:600;margin: 10px;font-family:arial;">Balance:</p></div>
+    <div class="row">
+    <button> $10,000</button>
+    <button> $25,000</button>
+    <button  style="background-color:#0781fe">$50,000</button>
+    <button> $100,000</button>
+    </div>
+    <table class="styled-table">
+    <thead>
+        <tr>
+        <th></th>
+            <th>Step 1 <br> FTMO Challenge</th>
+            <th>Step 2 <br> Verification</th>
+            <th>Step 3 <br> FTMO Trader</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="first"><i class="fa fa-caret-down" aria-hidden="true"></i>&nbsp;Trading Period</td>
+            <td  class="grayd">30 days <br> + 14 days</td>
+            <td class="whitd">60 days <br> <span style="text-decoration: line-through;">30</span></td>
+            <td class="grayd">indefinite</td>
+        </tr>
+        <tr>
+           <td class="first"><i class="fa fa-caret-down" aria-hidden="true"></i>&nbsp;Minimum Trading Days</td>
+            <td  class="grayd">10 days</td>
+            <td class="whitd">10 days <br> </td>
+            <td class="grayd">x</td>
+        </tr>
+        <!-- and so on... -->
+    </tbody>
+</table>
+</div>
+	</body>
+</html>
